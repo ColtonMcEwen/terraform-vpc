@@ -2,9 +2,12 @@ name: VPC Terratest
 on:
   push:
     paths:
-    - 'terraform-vpc/**'
+    - '**'
     branches:
       - main
+  pull_request:
+    paths:
+    - '**'
 jobs:
   go-tests:
     name: Run Go VPC Terratest
