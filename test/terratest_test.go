@@ -23,9 +23,9 @@ func TestTerraformDefault(t *testing.T) {
 
 		// Dynamic Variables that we should pass in addition to varfile.tfvars
 		Vars: map[string]interface{}{
-			"aws_region": "us-east-1",
-			"environment_name": "unittest-aws-vpc-" + stringRand,
-			"vpc_cidr": "10.0.0.0/16",
+			"aws_region":         "us-east-1",
+			"environment_name":   "unittest-aws-vpc-" + stringRand,
+			"vpc_cidr":           "10.0.0.0/16",
 			"enable_nat_gateway": false,
 			"enable_vpn_gateway": false,
 			"tags": `{
@@ -44,8 +44,8 @@ func TestTerraformDefault(t *testing.T) {
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
 
-	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
-	terraform.InitAndApply(t, terraformOptions)
+	// This will run `terraform init` and `terraform plan` and fail the test if there are any errors
+	terraform.InitAndPlan(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
 	actualVPCId := terraform.Output(t, terraformOptions, "vpc_id")
