@@ -48,7 +48,7 @@ func TestTerraformDefault(t *testing.T) {
 	// terraform.InitAndApply(t, terraformOptions)
 
 	// This will run `terraform init` and `terraform plan` and fail the test if there are any errors
-	terraform.InitAndPlan(t, terraformOptions)
+	terraform.InitAndPlanAndShowWithStruct(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
 	// actualVPCId := terraform.Output(t, terraformOptions, "vpc_id")
