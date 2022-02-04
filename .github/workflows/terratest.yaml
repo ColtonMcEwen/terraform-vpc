@@ -1,8 +1,6 @@
 name: VPC Terratest
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
